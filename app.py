@@ -10,7 +10,7 @@ def extract_watermark(watermarked_img):
     print(wm_extract, 'is the watermark embedded in the image')
 
 
-# # Load source images
+# Load source images
 image1 = cv2.imread('image1.jpeg')
 image2 = cv2.imread('image2.jpeg')
 # image1 = cv2.imread('fusion1.jpeg')
@@ -89,3 +89,20 @@ cv2.destroyAllWindows()
 # to check whether the water marked is embedded in the image or not
 path_of_image = 'fused_watermarked_image.png'
 extract_watermark(path_of_image)
+
+#Adding image watermark
+bwm1 = WaterMark(password_wm=1, password_img=1)
+# read original image
+bwm1.read_img('fused_image.jpg')
+# read watermark
+bwm1.read_wm('test_watermark.png')
+# embed
+bwm1.embed('embedded.png')
+
+#extracting image water mark
+bwm1 = WaterMark(password_wm=1, password_img=1)
+# notice that wm_shape is necessary, wm shape is the pixel sizes of the watermark image
+img_wm_extract = bwm1.extract(filename='embedded.png', wm_shape=(31, 31), out_wm_name='output/extracted.png', )
+cv2.imshow("Fused Image watermark", img_wm_extract)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
