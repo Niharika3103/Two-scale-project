@@ -71,24 +71,24 @@ for i in range(num_scales - 1):
     fused_image += detail_layers_fused[i]
 
 cv2.imwrite('fused_image.jpg', fused_image)
-# Adding watermark
-bwm1 = WaterMark(password_img=1, password_wm=1)
-bwm1.read_img('fused_image.jpg')
-wm = '@guofei9987 开源万岁！'
-bwm1.read_wm(wm, mode='str')
-bwm1.embed('fused_watermarked_image.png')
-len_wm = len(bwm1.wm_bit)
-print('Put down the length of wm_bit {len_wm}'.format(len_wm=len_wm))
-
-# Display the fused and watermarked image
-fused_watermarked_image = cv2.imread('fused_watermarked_image.png')
-cv2.imshow('Fused Watermarked Image', fused_watermarked_image)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-
-# to check whether the water marked is embedded in the image or not
-path_of_image = 'fused_watermarked_image.png'
-extract_watermark(path_of_image)
+# # Adding watermark
+# bwm1 = WaterMark(password_img=1, password_wm=1)
+# bwm1.read_img('fused_image.jpg')
+# wm = '@guofei9987 开源万岁！'
+# bwm1.read_wm(wm, mode='str')
+# bwm1.embed('fused_watermarked_image.png')
+# len_wm = len(bwm1.wm_bit)
+# print('Put down the length of wm_bit {len_wm}'.format(len_wm=len_wm))
+#
+# # Display the fused and watermarked image
+# fused_watermarked_image = cv2.imread('fused_watermarked_image.png')
+# cv2.imshow('Fused Watermarked Image', fused_watermarked_image)
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
+#
+# # to check whether the water marked is embedded in the image or not
+# path_of_image = 'fused_watermarked_image.png'
+# extract_watermark(path_of_image)
 
 #Adding image watermark
 bwm1 = WaterMark(password_wm=1, password_img=1)
@@ -98,6 +98,11 @@ bwm1.read_img('fused_image.jpg')
 bwm1.read_wm('test_watermark.png')
 # embed
 bwm1.embed('embedded.png')
+#Displaying the embedded image
+fused_watermarked_image = cv2.imread('fused_watermarked_image.png')
+cv2.imshow("Fused Image watermark",fused_watermarked_image )
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 
 #extracting image water mark
 bwm1 = WaterMark(password_wm=1, password_img=1)
