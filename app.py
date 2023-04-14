@@ -1,9 +1,10 @@
 import cv2
 import numpy as np
 from blind_watermark import WaterMark
+import blind_watermark
+blind_watermark.bw_notes.close()
 
-
-# method to extract water mark
+# method to extract watermark
 def extract_watermark(watermarked_img):
     bwm1 = WaterMark(password_img=1, password_wm=1)
     wm_extract = bwm1.extract(watermarked_img, wm_shape=len_wm, mode='str')
